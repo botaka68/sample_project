@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+  
+  {% if user.is_authenticated %}
+  <div class="message">
+    <div class="message-header">
+      <p>You are logged in as: {{ user.username }}</p>
+    </div>
+    <div class="message-body">
+      <p><a href="{% url 'submit' %}">Submit IOC's</a></p>  
+      <p><a href="{% url 'upload' %}">Submit IOC File</a></p>
+    </div>
+  </div>
+  {% else %}
+  <div class="message">
+    <div class="message-header">
+      <p>You are not logged in!</p>
+    </div>
+    <div class="message-body">
+      <p><a href="{% url 'login' %}">Login</a> to continue.</p>  
+      <p>Don't have an accout? <a href="{% url 'signup' %}">Register</a></p>
+    </div>
+  </div>
+
+  {% endif %}
+{% endblock content %}

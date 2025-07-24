@@ -1,0 +1,19 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    
+<div class="message">
+    <div class="message-header">
+      <p>Indicators submitted successfully</p>
+    </div>
+    <div class="message-body">
+        <ul class="list-group">
+            {% for s in result_data %}
+            <li class="list-group-item list-group-item-light">{{ s }}</li>
+            {% endfor %}
+        </ul>
+      </p>
+    </div>
+  </div>
+{% endblock content %}
+

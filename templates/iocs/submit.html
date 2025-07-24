@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="message">
+    <div class="message-header">
+      <p>Submit Indicators</p>
+    </div>
+    <div class="message-body">
+        <form action={% url 'submit' %} method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+    </div>
+  </div>  
+    <div class="field is-grouped">
+      <div class="control">
+        <button type="submit" class="button is-link">Submit</button>
+      </div>
+      <div class="control">
+        <button class="button is-link is-light">
+            <a href="{% url 'submit' %}">Cancel</a>
+        </button>
+      </div>
+    </div>
+  </form>
+
+{% endblock content %}

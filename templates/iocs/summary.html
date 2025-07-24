@@ -1,0 +1,35 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    
+<div class="message">
+    <div class="message-header">
+      <p>Summary</p>
+    </div>
+    <div class="message-body">
+        {% for s in result_data %}
+        <li class="list-group-item list-group-item-light">{{ s }}</li>
+        {% endfor %}
+    </div>
+</div>    
+    
+    <div class="block">
+        <form action="{% url 'success' %}" method="post">
+            {% csrf_token %}
+            <div class="control">
+                <button type="submit" name='submit' class="button is-link">Submit</button>
+                <button type="button" name='cancel' class="button is-link is-light">
+                    {% if source == "upload"%}
+                    <a href="{% url 'upload' %}">Cancel</a>
+                    {% endif %}
+                    {% if source == "submit" %}
+                    <a href="{% url 'submit' %}">Cancel</a>
+                    {% endif %}
+                </button>
+
+              </div>
+        </form>
+    </div>
+{% endblock content %}
+
+
